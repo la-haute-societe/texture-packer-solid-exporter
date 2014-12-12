@@ -1,0 +1,35 @@
+/**
+ * {{settings.tpsName}}
+ *
+ * Solid less mixins exporter
+ * {{smartUpdateKey}}
+ */{% load makecssselector %}
+.sprite-{{texture.trimmedName}}-vars()
+{
+    @spriteHeight: {{texture.size.width}}px;
+    @spriteWidth: {{texture.size.height}}px;
+    @spriteScale: {{variantParams.scale}};
+    @spriteDPI: {{settings.dpi}};
+    @spriteSubPath: '{{settings.textureSubPath}}';
+    @spriteFullName: '{{texture.fullName}}';
+    @spriteURL: '{% if settings.textureSubPath %}{{settings.textureSubPath}}/{% endif %}{{texture.fullName}}';
+}
+.sprite-{{texture.trimmedName}}
+{
+    .sprite-{{texture.trimmedName}}-vars();
+    background-repeat: no-repeat;
+    background-image: url(@spriteURL);
+}
+.sprite-{{texture.trimmedName}}-inbl
+{
+    .sprite-{{texture.trimmedName}};
+    display:inline-block;
+    overflow: hidden;
+}
+
+{% for sprite in sprites %}
+// {{sprite.fullName}}
+.{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-vars() { @textureWidth: {{sprite.frameRect.width}}px; @textureHeight: {{sprite.frameRect.height}}px; @textureX: -{{sprite.frameRect.x}}px; @textureY: -{{sprite.frameRect.y}}px; @textureCenterX: {{sprite.centerOffset.x}}; @textureCenterY: {{sprite.centerOffset.x}}; }
+.{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-ratio(@ratio) { .{{texture.trimmedName}}-{{sprite.trimmedName}}-vars(); .sprite-{{texture.trimmedName}}-vars(); width: @textureWidth * @ratio; height: @textureHeight * @ratio; background-position: @textureX * @ratio @textureY * @ratio; background-size: @spriteHeight * @ratio @spriteWidth * @ratio; }
+.{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}} { .{{texture.trimmedName}}-{{sprite.trimmedName}}-vars(); width: @textureWidth; height: @textureHeight; background-position: @textureX @textureY; }
+{% endfor %}
