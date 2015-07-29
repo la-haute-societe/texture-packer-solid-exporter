@@ -2,28 +2,53 @@
  * {{settings.tpsName}}
  *
  * Solid less mixins exporter
- * {{smartUpdateKey}}
- */{% load makecssselector %}
+ */{% load makecssselector %}{% load makesmartupdatekey %}
+
+// This mixin contains all properties about this sprite.
+// Insert it in your declaration to get access to those vars
 .sprite-{{texture.trimmedName}}-vars()
 {
+    // Sprite size
     @spriteHeight: {{texture.size.width}}px;
     @spriteWidth: {{texture.size.height}}px;
+
+    // Sprite density
     @spriteScale: {{variantParams.scale}};
     @spriteDPI: {{settings.dpi}};
+
+    // Sprite path parts
     @spriteSubPath: '{{settings.textureSubPath}}';
     @spriteFullName: '{{texture.fullName}}';
+
+    // Full sprite path
     @spriteURL: '{% if settings.textureSubPath %}{{settings.textureSubPath}}/{% endif %}{{texture.fullName}}';
+    
+    // The build seed to use with this sprite.
+    // Usefull to clear cache
+    @spriteSeed: '{{smartUpdateKey|makesmartupdatekey}}';
 }
+
+// Target the sprite as background with build seed
 .sprite-{{texture.trimmedName}}
 {
     .sprite-{{texture.trimmedName}}-vars();
     background-repeat: no-repeat;
-    background-image: url(@spriteURL);
+    background-image: url(~'@{spriteURL}?@{spriteSeed}');
 }
+
+// Target the sprite as background without the build seed
+.sprite-{{texture.trimmedName}}-noSeed
+{
+    .sprite-{{texture.trimmedName}}-vars();
+    background-repeat: no-repeat;
+    background-image: url(~'@{spriteURL}');
+}
+
+// Use inline-block (with seed)
 .sprite-{{texture.trimmedName}}-inbl
 {
-    .sprite-{{texture.trimmedName}};
-    display:inline-block;
+    .sprite-{{texture.trimmedName}}();
+    display: inline-block;
     overflow: hidden;
 }
 

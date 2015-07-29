@@ -28,6 +28,22 @@
             <!-- name of the template file -->
             <template>solid.less</template>
         </file>
+        <file>
+            <!-- name of this file variable -->
+            <name>json</name>
+
+            <!-- human readable name (for GUI) -->
+            <displayName>Json file</displayName>
+
+            <!-- file extension for the file -->
+            <fileExtension>json</fileExtension>
+
+            <!-- description what the file contains, used in tooltips in the GUI -->
+            <description>Json file containing sprite informations</description>
+
+            <!-- name of the template file -->
+            <template>solid.json</template>
+        </file>
     </files>
 
     <!-- target framework supports trimming -->

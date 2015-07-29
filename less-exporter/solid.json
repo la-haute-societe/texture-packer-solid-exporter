@@ -1,0 +1,24 @@
+{% load makesmartupdatekey %}{
+    "spriteHeight"		: {{texture.size.width}},
+    "spriteWidth"		: {{texture.size.height}},
+
+    "spriteScale"		: {{variantParams.scale}},
+    "spriteDPI"			: {{settings.dpi}},
+
+    "spriteSubPath"		: "{{settings.textureSubPath}}",
+    "spriteFullName"	: "{{texture.fullName}}",
+
+    "spriteURL"			: "{% if settings.textureSubPath %}{{settings.textureSubPath}}/{% endif %}{{texture.fullName}}",
+	"seed"				: "{{smartUpdateKey|makesmartupdatekey}}",
+
+	"coords" : [{% for sprite in sprites %}
+		{
+			"width"		: {{sprite.frameRect.width}},
+			"height"	: {{sprite.frameRect.height}},
+			"x"			: {{sprite.frameRect.x}},
+			"y"			: {{sprite.frameRect.y}},
+			"centerX"	: {{sprite.centerOffset.x}},
+			"centerY"	: {{sprite.centerOffset.x}}
+		}{% if not forloop.last %},{% endif %}{% endfor %}
+	]
+}

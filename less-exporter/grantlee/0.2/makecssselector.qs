@@ -8,6 +8,14 @@ MakeSelectorFilter.filterName = "makecssselector";
 MakeSelectorFilter.isSafe = false;
 Library.addFilter("MakeSelectorFilter");
 
+var MakeSmartUpdateKey = function (pSmartUpdateKey)
+{
+    return pSmartUpdateKey.match(/\d+/g).join('');
+}
+MakeSmartUpdateKey.filterName = "makesmartupdatekey";
+MakeSmartUpdateKey.isSafe = false;
+Library.addFilter("MakeSmartUpdateKey");
+
 
 // some global variables to store width and height in
 width=1;
