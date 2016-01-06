@@ -11,8 +11,8 @@
     "spriteURL"			: "{% if settings.textureSubPath %}{{settings.textureSubPath}}/{% endif %}{{texture.fullName}}",
 	"seed"				: "{{smartUpdateKey|makesmartupdatekey}}",
 
-	"coords" : [{% for sprite in sprites %}
-		{
+	"coords" : { {% for sprite in sprites %}
+		"{{sprite.trimmedName|makecssselector}}" : {
 			"width"		: {{sprite.frameRect.width}},
 			"height"	: {{sprite.frameRect.height}},
 			"x"			: {{sprite.frameRect.x}},
@@ -20,5 +20,5 @@
 			"centerX"	: {{sprite.centerOffset.x}},
 			"centerY"	: {{sprite.centerOffset.x}}
 		}{% if not forloop.last %},{% endif %}{% endfor %}
-	]
+	}
 }

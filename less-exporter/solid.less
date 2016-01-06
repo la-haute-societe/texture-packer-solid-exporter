@@ -54,7 +54,7 @@
 
 {% for sprite in sprites %}
 // {{sprite.fullName}}
-.{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-vars() { @textureWidth: {{sprite.frameRect.width}}px; @textureHeight: {{sprite.frameRect.height}}px; @textureX: -{{sprite.frameRect.x}}px; @textureY: -{{sprite.frameRect.y}}px; @textureCenterX: {{sprite.centerOffset.x}}; @textureCenterY: {{sprite.centerOffset.x}}; }
-.{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-ratio(@ratio) { .{{texture.trimmedName}}-{{sprite.trimmedName}}-vars(); .sprite-{{texture.trimmedName}}-vars(); width: @textureWidth * @ratio; height: @textureHeight * @ratio; background-position: @textureX * @ratio @textureY * @ratio; background-size: @spriteHeight * @ratio @spriteWidth * @ratio; }
-.{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}} { .{{texture.trimmedName}}-{{sprite.trimmedName}}-vars(); width: @textureWidth; height: @textureHeight; background-position: @textureX @textureY; }
+.sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-vars() { @textureWidth: {{sprite.frameRect.width}}px; @textureHeight: {{sprite.frameRect.height}}px; @textureX: -{{sprite.frameRect.x}}px; @textureY: -{{sprite.frameRect.y}}px; @textureCenterX: {{sprite.centerOffset.x}}; @textureCenterY: {{sprite.centerOffset.x}}; }
+.sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-ratio(@ratio) { .{{texture.trimmedName}}-{{sprite.trimmedName}}-vars(); .sprite-{{texture.trimmedName}}-vars(); width: @textureWidth * @ratio; height: @textureHeight * @ratio; background-position: @textureX * @ratio @textureY * @ratio; background-size: @spriteHeight * @ratio @spriteWidth * @ratio; }
+.sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}} { .{{texture.trimmedName}}-{{sprite.trimmedName}}-vars(); width: @textureWidth; height: @textureHeight; background-position: @textureX @textureY; }
 {% endfor %}
