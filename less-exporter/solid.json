@@ -1,4 +1,4 @@
-{% load makesmartupdatekey %}{
+{% load makecssselector %}{% load makesmartupdatekey %}{
     "spriteHeight"		: {{texture.size.width}},
     "spriteWidth"		: {{texture.size.height}},
 
