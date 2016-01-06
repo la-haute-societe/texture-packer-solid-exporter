@@ -1,6 +1,6 @@
 {% load makecssselector %}{% load makesmartupdatekey %}{
-    "spriteHeight"		: {{texture.size.width}},
-    "spriteWidth"		: {{texture.size.height}},
+    "spriteHeight"		: {{texture.size.height}},
+    "spriteWidth"		: {{texture.size.width}},
 
     "spriteScale"		: {{variantParams.scale}},
     "spriteDPI"			: {{settings.dpi}},
