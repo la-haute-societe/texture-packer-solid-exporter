@@ -1,5 +1,4 @@
 # Advanced exporters for Texture Packer
-=======================================
 
 Usefull advanced exports for [Texture Packer](https://www.codeandweb.com/texturepacker) spriting software. You will be able to create sprites files for [LESS](http://lesscss.org/) and [SASS](http://sass-lang.com/) pre-precessors. Also a *JSON* exporter is included to be able to access sprite positions in your *javascript* application.
 
@@ -41,6 +40,7 @@ For example if the structure is like this :
         - my-app.css
     - img
         - my-app.png
+
 The texture path parameter have to be `../img`
 
 
