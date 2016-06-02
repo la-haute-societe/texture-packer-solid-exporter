@@ -1,7 +1,8 @@
 /**
  * Sprite name : {{settings.tpsName}}
- * File created with Solid sass mixins exporter
+ * File created with Solid SASS mixins exporter
  */{% load makecssselector %}{% load makesmartupdatekey %}
+
 
 // -----------------------------------------------------------------------------
 // SPRITE
@@ -19,7 +20,7 @@ $sprite-{{texture.trimmedName}}-sub-path: '{{settings.textureSubPath}}';
 $sprite-{{texture.trimmedName}}-full-name: '{{texture.fullName}}';
 
 // Full sprite path
-$sprite-{{texture.trimmedName}}-URL: '{% if settings.textureSubPath %}{{settings.textureSubPath}}/{% endif %}{{texture.fullName}}';
+$sprite-{{texture.trimmedName}}-URL: '{% if settings.textureSubPath %}{{settings.textureSubPath}}{% endif %}{{texture.fullName}}';
 
 // The build seed to use with this sprite.
 // Usefull to clear cache
@@ -38,6 +39,7 @@ $sprite-{{texture.trimmedName}}-seed: '{{smartUpdateKey|makesmartupdatekey}}';
     background-repeat: no-repeat;
     background-image: url('#{$sprite-{{texture.trimmedName}}-URL}');
 }
+
 
 // -----------------------------------------------------------------------------
 // TEXTURES

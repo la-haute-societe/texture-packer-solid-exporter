@@ -1,8 +1,11 @@
 /**
- * {{settings.tpsName}}
- *
- * Solid less mixins exporter
+ * Sprite name : {{settings.tpsName}}
+ * File created with Solid LESS mixins exporter
  */{% load makecssselector %}{% load makesmartupdatekey %}
+
+
+// -----------------------------------------------------------------------------
+// SPRITE
 
 // This mixin contains all properties about this sprite.
 // Insert it in your declaration to get access to those vars
@@ -21,15 +24,15 @@
     @spriteFullName: '{{texture.fullName}}';
 
     // Full sprite path
-    @spriteURL: '{% if settings.textureSubPath %}{{settings.textureSubPath}}/{% endif %}{{texture.fullName}}';
-    
+    @spriteURL: '{% if settings.textureSubPath %}{{settings.textureSubPath}}{% endif %}{{texture.fullName}}';
+
     // The build seed to use with this sprite.
     // Usefull to clear cache
     @spriteSeed: '{{smartUpdateKey|makesmartupdatekey}}';
 }
 
 // Target the sprite as background with build seed
-.sprite-{{texture.trimmedName}}
+.sprite-{{texture.trimmedName}}-seed
 {
     .sprite-{{texture.trimmedName}}-vars();
     background-repeat: no-repeat;
@@ -52,9 +55,32 @@
     overflow: hidden;
 }
 
+
+// -----------------------------------------------------------------------------
+// TEXTURES
+
 {% for sprite in sprites %}
-// {{sprite.fullName}}
-.sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-vars() { @textureWidth: {{sprite.frameRect.width}}px; @textureHeight: {{sprite.frameRect.height}}px; @textureX: -{{sprite.frameRect.x}}px; @textureY: -{{sprite.frameRect.y}}px; @textureCenterX: {{sprite.centerOffset.x}}; @textureCenterY: {{sprite.centerOffset.x}}; }
-.sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-ratio(@ratio) { .sprite-{{texture.trimmedName}}-{{sprite.trimmedName}}-vars(); .sprite-{{texture.trimmedName}}-vars(); width: @textureWidth * @ratio; height: @textureHeight * @ratio; background-position: @textureX * @ratio @textureY * @ratio; background-size: @spriteHeight * @ratio @spriteWidth * @ratio; }
-.sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}} { .sprite-{{texture.trimmedName}}-{{sprite.trimmedName}}-vars(); width: @textureWidth; height: @textureHeight; background-position: @textureX @textureY; }
+// -----------------------------------------------------------------------------
+// {{sprite.fullName}} size and position
+.sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-vars()
+{
+    @textureWidth: {{sprite.frameRect.width}}px;
+    @textureHeight: {{sprite.frameRect.height}}px;
+    @textureX: -{{sprite.frameRect.x}}px;
+    @textureY: -{{sprite.frameRect.y}}px;
+    @textureCenterX: {{sprite.centerOffset.x}};
+    @textureCenterY: {{sprite.centerOffset.x}};
+}
+
+// {{sprite.fullName}} mixin
+.sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-ratio(@ratio : 1)
+{
+    .sprite-{{texture.trimmedName}}-{{sprite.trimmedName}}-vars();
+    .sprite-{{texture.trimmedName}}-vars();
+    width: @textureWidth * @ratio;
+    height: @textureHeight * @ratio;
+    background-position: @textureX * @ratio @textureY * @ratio;
+    background-size: @spriteHeight * @ratio @spriteWidth * @ratio;
+}
+
 {% endfor %}
