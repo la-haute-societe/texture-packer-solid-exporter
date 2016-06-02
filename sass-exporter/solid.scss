@@ -1,0 +1,65 @@
+/**
+ * Sprite name : {{settings.tpsName}}
+ * File created with Solid sass mixins exporter
+ */{% load makecssselector %}{% load makesmartupdatekey %}
+
+// -----------------------------------------------------------------------------
+// SPRITE
+
+// Sprite size
+$sprite-{{texture.trimmedName}}-width: {{texture.size.height}}px;
+$sprite-{{texture.trimmedName}}-height: {{texture.size.width}}px;
+
+// Sprite density
+$sprite-{{texture.trimmedName}}-scale: {{variantParams.scale}};
+$sprite-{{texture.trimmedName}}-DPI: {{settings.dpi}};
+
+// Sprite path parts
+$sprite-{{texture.trimmedName}}-sub-path: '{{settings.textureSubPath}}';
+$sprite-{{texture.trimmedName}}-full-name: '{{texture.fullName}}';
+
+// Full sprite path
+$sprite-{{texture.trimmedName}}-URL: '{% if settings.textureSubPath %}{{settings.textureSubPath}}/{% endif %}{{texture.fullName}}';
+
+// The build seed to use with this sprite.
+// Usefull to clear cache
+$sprite-{{texture.trimmedName}}-seed: '{{smartUpdateKey|makesmartupdatekey}}';
+
+// Target the sprite as background with build seed
+@mixin sprite-{{texture.trimmedName}}-seed
+{
+    background-repeat: no-repeat;
+    background-image: url('#{$sprite-{{texture.trimmedName}}-URL}?#{$sprite-{{texture.trimmedName}}-seed}');
+}
+
+// Target the sprite as background without the build seed
+@mixin sprite-{{texture.trimmedName}}-noSeed
+{
+    background-repeat: no-repeat;
+    background-image: url('#{$sprite-{{texture.trimmedName}}-URL}');
+}
+
+// -----------------------------------------------------------------------------
+// TEXTURES
+
+{% for sprite in sprites %}
+// -----------------------------------------------------------------------------
+// {{sprite.fullName}} texture size and position
+
+$sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-width: {{sprite.frameRect.width}}px;
+$sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-height: {{sprite.frameRect.height}}px;
+$sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-x: -{{sprite.frameRect.x}}px;
+$sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-y: -{{sprite.frameRect.y}}px;
+$sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-center-x: {{sprite.centerOffset.x}};
+$sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-center-y: {{sprite.centerOffset.x}};
+
+// {{sprite.fullName}} mixin
+@mixin sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}} ($ratio:1)
+{
+    width: $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-width * $ratio;
+    height: $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-height * $ratio;
+    background-position: $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-x * $ratio $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-y * $ratio;
+    background-size: $sprite-{{texture.trimmedName}}-height * $ratio $sprite-{{texture.trimmedName}}-width * $ratio;
+}
+
+{% endfor %}

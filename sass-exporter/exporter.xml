@@ -1,0 +1,68 @@
+<exporter version="1.0">
+    <!-- identifier of the exporter -->
+    <name>solid-sass</name>
+	
+    <!-- display name of the exporter for the combo box -->
+    <displayName>Solid Sass Export</displayName>
+	
+    <!-- description of the exporter -->
+    <description>Export for Sass as mixins. Will add vars at global scope sprites sizes and textures positions. Will also add mixins for each texture with automatic background-size calculation with a ratio parameter. The generated CSS will not be heavier than the original Sass exporter.</description>
+
+    <!-- exporter version -->
+    <version>1.0</version>
+	
+    <files>
+        <file>
+            <!-- name of this file variable -->
+            <name>sass</name>
+
+            <!-- human readable name (for GUI) -->
+            <displayName>Sass file</displayName>
+
+            <!-- file extension for the file -->
+            <fileExtension>scss</fileExtension>
+
+            <!-- description what the file contains, used in tooltips in the GUI -->
+            <description>Sass mixins file output</description>
+
+            <!-- name of the template file -->
+            <template>solid.scss</template>
+        </file>
+        <file>
+            <!-- name of this file variable -->
+            <name>json</name>
+
+            <!-- human readable name (for GUI) -->
+            <displayName>Json file</displayName>
+
+            <!-- file extension for the file -->
+            <fileExtension>json</fileExtension>
+
+            <!-- description what the file contains, used in tooltips in the GUI -->
+            <description>Json file containing sprite informations</description>
+
+            <!-- name of the template file -->
+            <template>solid.json</template>
+        </file>
+    </files>
+
+    <!-- target framework supports trimming -->
+    <supportsTrimming>true</supportsTrimming>
+
+    <!-- target framework supports rotated sprites -->
+    <supportsRotation>false</supportsRotation>
+
+    <!-- rotated sprites direction (cw/ccw) -->
+    <rotationDirection>cw</rotationDirection>
+
+    <!-- supports npot sizes -->
+    <supportsNPOT>true</supportsNPOT>
+
+    <!-- supports file name stripping (remove .png etc) -->
+    <supportsTrimSpriteNames>yes</supportsTrimSpriteNames>
+
+    <!-- supports texure subpath -->
+    <supportsTextureSubPath>yes</supportsTextureSubPath>
+</exporter>
+
+
