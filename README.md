@@ -2,8 +2,9 @@
 
 Usefull advanced exports for [Texture Packer](https://www.codeandweb.com/texturepacker) spriting software. You will be able to create sprites files for [LESS](http://lesscss.org/) and [SASS](http://sass-lang.com/) pre-precessors. Also a **JSON** exporter is included to be able to access sprite positions in your **javascript** application.
 
-The **key feature** of the exporter is the automatic ratio generator. You can mix **retina** and non-retina (or any density in fact) images in your sprite. The texture mixin have a **ratio** parameter to be able to compile your css with the right texture size.
+The **key feature** of the exporter is the automatic scale / ratio generator. You can mix **retina** and non-retina (or any density in fact) images in your sprite. The texture mixin have a **ratio** parameter to be able to compile your css with the right texture size.
 
+Texture declarations are still exported as raw CSS with ratio of 1. This is kept to be able to target from DOM, really handy.
 
 
 ### How to install

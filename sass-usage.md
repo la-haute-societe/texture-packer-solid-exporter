@@ -66,6 +66,8 @@ This will be added to the global scope :
 
 ### SASS Example usage
 
+From SASS
+
 ```
 .MySpriteClass1
 {
@@ -74,7 +76,7 @@ This will be added to the global scope :
 
     // Target texture inside sprite with background-position
     // Will use default background size
-    @include sprite-my-application-big-logo-white();
+    @include sprite-my-application-big-logo-white-scale();
 }
 
 .MySpriteClass2
@@ -84,7 +86,7 @@ This will be added to the global scope :
 
     // Target texture inside sprite with background-position
     // Will scale image with by dividing original size by 2 (.5 ratio = 1/2)
-    @include sprite-my-application-big-logo-white-retina(.5);
+    @include sprite-my-application-big-logo-white-retina-scale(.5);
 }
 
 .MySpriteClass3
@@ -97,4 +99,9 @@ This will be added to the global scope :
 }
 ```
 
+From DOM
+
+```
+<div class="sprite-my-application-seed sprite-my-application-big-logo-white-retina"></div>
+```
 

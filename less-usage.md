@@ -73,6 +73,8 @@ Use it to add following vars to your current scope :
 
 ### LESS Example usage
 
+From LESS
+
 ```
 .MySpriteClass1
 {
@@ -81,7 +83,7 @@ Use it to add following vars to your current scope :
 
     // Target texture inside sprite with background-position
     // Will use default background size
-    .sprite-my-application-big-logo-white();
+    .sprite-my-application-big-logo-white-scale();
 }
 
 .MySpriteClass2
@@ -91,7 +93,7 @@ Use it to add following vars to your current scope :
 
     // Target texture inside sprite with background-position
     // Will scale image with by dividing original size by 2 (.5 ratio = 1/2)
-    .sprite-my-application-big-logo-white-retina(.5);
+    .sprite-my-application-big-logo-white-retina-scale(.5);
 }
 
 .MySpriteClass3
@@ -110,4 +112,8 @@ Use it to add following vars to your current scope :
 }
 ```
 
+From DOM
 
+```
+<div class="sprite-my-application-seed sprite-my-application-big-logo-white-retina"></div>
+```

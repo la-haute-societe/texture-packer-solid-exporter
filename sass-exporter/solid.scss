@@ -32,12 +32,22 @@ $sprite-{{texture.trimmedName}}-seed: '{{smartUpdateKey|makesmartupdatekey}}';
     background-repeat: no-repeat;
     background-image: url('#{$sprite-{{texture.trimmedName}}-URL}?#{$sprite-{{texture.trimmedName}}-seed}');
 }
+// Same as raw CSS
+.sprite-{{texture.trimmedName}}-seed
+{
+	@include sprite-{{texture.trimmedName}}-seed;
+}
 
 // Target the sprite as background without the build seed
 @mixin sprite-{{texture.trimmedName}}-noSeed
 {
     background-repeat: no-repeat;
     background-image: url('#{$sprite-{{texture.trimmedName}}-URL}');
+}
+// Same as raw CSS
+.sprite-{{texture.trimmedName}}-noSeed
+{
+	@include sprite-{{texture.trimmedName}}-noSeed;
 }
 
 
@@ -46,8 +56,9 @@ $sprite-{{texture.trimmedName}}-seed: '{{smartUpdateKey|makesmartupdatekey}}';
 
 {% for sprite in sprites %}
 // -----------------------------------------------------------------------------
-// {{sprite.fullName}} texture size and position
+// {{sprite.fullName}}
 
+// Texture size and position
 $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-width: {{sprite.frameRect.width}}px;
 $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-height: {{sprite.frameRect.height}}px;
 $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-x: -{{sprite.frameRect.x}}px;
@@ -55,13 +66,19 @@ $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-y: -{{spr
 $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-center-x: {{sprite.centerOffset.x}};
 $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-center-y: {{sprite.centerOffset.x}};
 
-// {{sprite.fullName}} mixin
-@mixin sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}} ($ratio:1)
+// Scale mixin
+@mixin sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-scale ($ratio:1)
 {
     width: $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-width * $ratio;
     height: $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-height * $ratio;
     background-position: $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-x * $ratio $sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-y * $ratio;
     background-size: $sprite-{{texture.trimmedName}}-height * $ratio $sprite-{{texture.trimmedName}}-width * $ratio;
+}
+
+// CSS Injected declaration
+.sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}
+{
+	@include sprite-{{texture.trimmedName}}-{{sprite.trimmedName|makecssselector}}-scale(1);
 }
 
 {% endfor %}
