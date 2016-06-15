@@ -8,7 +8,7 @@
     "spriteSubPath"		: "{{settings.textureSubPath}}",
     "spriteFullName"	: "{{texture.fullName}}",
 
-    "spriteURL"			: "{% if settings.textureSubPath %}{{settings.textureSubPath}}/{% endif %}{{texture.fullName}}",
+    "spriteURL"			: "{% if settings.textureSubPath %}{{settings.textureSubPath}}{% endif %}{{texture.fullName}}",
 	"seed"				: "{{smartUpdateKey|makesmartupdatekey}}",
 
 	"coords" : { {% for sprite in sprites %}
