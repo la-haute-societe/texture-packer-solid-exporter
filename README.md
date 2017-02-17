@@ -74,3 +74,9 @@ Take a look at usage docs :
 - [LESS usage](https://github.com/la-haute-societe/texture-packer-solid-exporter/blob/master/less-usage.md)
 - [SASS usage](https://github.com/la-haute-societe/texture-packer-solid-exporter/blob/master/sass-usage.md)
 
+
+### About
+
+Please feel free to contact me if there is any issue.
+
+This was made on my duty time at [La Haute Société](http://www.lahautesociete.com).
